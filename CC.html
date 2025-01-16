@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Basic HTML Page</title>
+    <title>Cloud Computing Project</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,19 +15,82 @@
         main {
             padding: 2rem;
         }
+        #quarter p span {
+            display: block;
+            background-color: lightgrey;
+            padding: 0.5rem 0;
+            width: 40%;
+            padding-left: 10px;
+            padding-right: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <main>
         <h1>Computing and Software Development, AAS</h1>
-        <section id="quarter1">
-            <h2>Quarter 1</h2>
-            <p>CSD 111 Computer Programming Fundamentals 5 credits
-                <br>CSD 112 HTML and CSS 5 credits
-                <br>GAME 108 Interactive Media Design 5 credits
-                <br>Humanitites course 5 credits</p>
-        </section>
+        <section id="quarter">
+            <h2>Quarter One</h2>
+            <p>
+                <span>CSD 111 Computer Programming Fundamentals 5 credits</span>
+                <span>CSD 112 HTML and CSS 5 credits</span>
+                <span>GAME 108 Interactive Media Design 5 credits</span>
+                <span>Humanities course 5 credits</span>
+            </p>
 
+            <h2>Quarter Two</h2>
+            <p>
+                <span>CS& 141 Computer Science I Java 5 credits</span>
+                <span>CSD 138 Structured Query Language (SQL) 5 credits</span>
+                <span>ENGL& 101 English Composition I 5 credits</span>
+            </p>
+
+            <h2>Quarter Three</h2>
+            <p>
+                <span>CS 143 Computer Science II Java 5 credits</span>
+                <span>CSD 122 JavaScript and jQuery 5 credits</span>
+                <span>MATH& 141 Pre-Calculus I 5 credits</span>
+            </p>
+
+            <h2>Quarter Four</h2>
+            <p>
+                <span>CSD 228 Programming with C# 5 credits</span>
+                <span>CSD 275 PHP Scripting 5 credits</span>
+                <span>Social Science course 5 credits</span>
+            </p>
+
+            <h2>Quarter Five</h2>
+            <p>
+                <span>CSD 230 Programming For Mobile Devices 5 credits</span>
+                <span>CSD 233 C++ Programming 5 credits</span>
+                <span>CSD 268 Quality Assurance Methodologies 5 credits</span>
+            </p>
+
+            <h2>Quarter Six</h2>
+            <p>
+                <span>CSD 299 IT Project 3 credits</span>
+                <span>CSD 298 Technical Interview/Job Search 5 credits</span>
+                <span>DSGN 290 Portfolio/Job Search 5 credits</span>
+                <span>CSD, CSNT, DSGN, or GAME Technical Elective course 4-5 credits</span>
+            </p>
+        </section>
+        <button id="startButton">Start</button>
     </main>
+    <script>
+        document.getElementById('startButton').addEventListener('click', function() {
+            const lines = document.querySelectorAll('#quarter p span');
+            lines.forEach((line) => {
+                line.style.backgroundColor = 'white';
+            });
+        });
+
+        document.querySelectorAll('#quarter p span').forEach((span) => {
+            span.addEventListener('click', function() {
+                if (this.style.backgroundColor === 'white') {
+                    this.style.backgroundColor = 'lightgreen';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

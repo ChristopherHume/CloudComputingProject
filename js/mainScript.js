@@ -11,7 +11,10 @@ class Course {
 // Function to load courses from JSON file
 async function loadCourses() {
     try {
-        const response = await fetch('../data/courses.json'); 
+        const response = await fetch('../data/courses.json');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
         const data = await response.json();
 
         const courses = data.map(courseData => new Course(
@@ -31,14 +34,31 @@ async function loadCourses() {
 // Function to display courses on the web page
 function displayCourses(courses) {
     const courseList = document.getElementById('courseList');
+    const quarters = {};
+
+    // Group courses by quarter
     courses.forEach(course => {
-        const courseDiv = document.createElement('div');
-        courseDiv.className = 'course grey';
-        courseDiv.textContent = `${course.id}: ${course.name} (${course.credits} credits)`;
-        courseDiv.dataset.id = course.id;
-        courseDiv.dataset.prerequisites = JSON.stringify(course.prerequisites);
-        courseDiv.addEventListener('click', () => handleCourseClick(courseDiv, courses));
-        courseList.appendChild(courseDiv);
+        if (!quarters[course.quarter]) {
+            quarters[course.quarter] = [];
+        }
+        quarters[course.quarter].push(course);
+    });
+
+    // Create and append quarter headers and courses
+    Object.keys(quarters).sort().forEach(quarter => {
+        const quarterHeader = document.createElement('h2');
+        quarterHeader.textContent = `Quarter ${quarter}`;
+        courseList.appendChild(quarterHeader);
+
+        quarters[quarter].forEach(course => {
+            const courseDiv = document.createElement('div');
+            courseDiv.className = 'course grey';
+            courseDiv.textContent = `${course.id}: ${course.name} (${course.credits} credits)`;
+            courseDiv.dataset.id = course.id;
+            courseDiv.dataset.prerequisites = JSON.stringify(course.prerequisites);
+            courseDiv.addEventListener('click', () => handleCourseClick(courseDiv, courses));
+            courseList.appendChild(courseDiv);
+        });
     });
 }
 

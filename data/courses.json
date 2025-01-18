@@ -32,7 +32,7 @@
         "id": "CSD 149",
         "name": "Algorithms",
         "credits": 4,
-        "quarter": 3,
+        "quarter": 4,
         "prerequisites": ["CSD 148"]
     }
     ,
@@ -40,7 +40,7 @@
         "id": "CSD 150",
         "name": "Algorithms",
         "credits": 4,
-        "quarter": 3,
+        "quarter": 5,
         "prerequisites": ["CSD 145","CSD 146"]
     }
 ]

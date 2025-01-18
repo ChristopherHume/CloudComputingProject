@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Loader</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Course List</h1>
+    <table id="courseTable">
+        <thead>
+            <tr>
+                <th>Course Name</th>
+                <th>Credits</th>
+                <th>Prerequisites</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Course rows will be inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        class Course {
+            constructor(name, credits, prerequisites) {
+                this.name = name;
+                this.credits = credits;
+                this.prerequisites = prerequisites;
+            }
+        }
+
+        // Function to load courses from JSON file
+        async function loadCourses() {
+            try {
+                const response = await fetch('courses.json');
+                const data = await response.json();
+
+                const courses = data.map(courseData => new Course(
+                    courseData.name,
+                    courseData.credits,
+                    courseData.prerequisites
+                ));
+
+                // Display courses in the table
+                const tableBody = document.getElementById('courseTable').getElementsByTagName('tbody')[0];
+                courses.forEach(course => {
+                    const row = tableBody.insertRow();
+                    const nameCell = row.insertCell(0);
+                    const creditsCell = row.insertCell(1);
+                    const prerequisitesCell = row.insertCell(2);
+
+                    nameCell.textContent = course.name;
+                    creditsCell.textContent = course.credits;
+                    prerequisitesCell.textContent = course.prerequisites.join(', ');
+                });
+            } catch (error) {
+                console.error('Error loading courses:', error);
+            }
+        }
+
+        // Load courses when the page loads
+        window.onload = loadCourses;
+    </script>
+</body>
+</html>

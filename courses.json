@@ -1,0 +1,20 @@
+[
+    {
+        "id": "CSD 145",
+        "name": "Introduction to Programming",
+        "credits": 3,
+        "prerequisites": []
+    },
+    {
+        "id": "CSD 146",
+        "name": "Data Structures",
+        "credits": 4,
+        "prerequisites": ["CSD 145", "CSD 146"]
+    },
+    {
+        "id": "CSD 147",
+        "name": "Algorithms",
+        "credits": 4,
+        "prerequisites": ["CSD 146"]
+    }
+]

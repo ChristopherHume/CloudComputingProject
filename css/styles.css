@@ -1,0 +1,18 @@
+.course {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+.grey {
+    background-color: grey;
+    color: white;
+}
+.white {
+    background-color: white;
+    color: black;
+}
+.green {
+    background-color: green;
+    color: white;
+}

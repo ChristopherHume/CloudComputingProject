@@ -11,7 +11,7 @@ class Course {
 // Function to load courses from JSON file
 async function loadCourses() {
     try {
-        const response = await fetch('data/courses.json');
+        const response = await fetch('../data/courses.json'); 
         const data = await response.json();
 
         const courses = data.map(courseData => new Course(

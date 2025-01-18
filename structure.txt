@@ -1,0 +1,18 @@
+my-web-project/
+├── index.html
+├── css/
+│   ├── styles.css
+│   └── reset.css
+├── js/
+│   ├── main.js
+│   └── utils.js
+├── images/
+│   ├── logo.png
+│   └── background.jpg
+├── data/
+│   └── courses.json
+├── fonts/
+│   └── custom-font.woff
+├── lib/
+│   └── jquery.min.js
+└── README.md

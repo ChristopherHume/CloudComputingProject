@@ -1,18 +1,19 @@
 .course {
+    width: 40%;
     padding: 10px;
     margin: 5px;
     border: 1px solid #ccc;
     cursor: pointer;
 }
 .grey {
-    background-color: grey;
-    color: white;
+    background-color: lightgrey;
+    color: black;
 }
 .white {
     background-color: white;
     color: black;
 }
 .green {
-    background-color: green;
-    color: white;
+    background-color: lightgreen;
+    color: black;
 }

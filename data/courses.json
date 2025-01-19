@@ -1,46 +1,152 @@
 [
     {
-        "id": "CSD 145",
-        "name": "Introduction to Programming",
-        "credits": 3,
+        "id": "CSD 111",
+        "name": "Computer Programming Fundamentals",
+        "credits": 5,
         "quarter": 1,
         "prerequisites": []
     },
     {
-        "id": "CSD 146",
-        "name": "Data Structures",
-        "credits": 4,
-        "quarter": 2,
+        "id": "CSD 112",
+        "name": "HTML and CSS",
+        "credits": 5,
+        "quarter": 1,
+        "prerequisites": ["CSD 111"]
+    },
+    {
+        "id": "GAME 108",
+        "name": "Interactive Media Design",
+        "credits": 5,
+        "quarter": 1,
         "prerequisites": []
     },
     {
-        "id": "CSD 147",
-        "name": "Algorithms",
-        "credits": 4,
-        "quarter": 3,
-        "prerequisites": ["CSD 146"]
+        "id": "Humanities",
+        "name": "Any",
+        "credits": 5,
+        "quarter": 1,
+        "prerequisites": []
+    },
+
+
+    {
+        "id": "CS& 141",
+        "name": "Computer Science I Java",
+        "credits": 5,
+        "quarter": 2,
+        "prerequisites": ["CSD 111"]
     },
     {
-        "id": "CSD 148",
-        "name": "Algorithms",
-        "credits": 4,
+        "id": "CSD 138",
+        "name": "Structured Query Language (SQL)",
+        "credits": 5,
+        "quarter": 2,
+        "prerequisites": ["CSD 111"]
+    },
+    {
+        "id": "ENGL& 101",
+        "name": "English Composition I",
+        "credits": 5,
+        "quarter": 2,
+        "prerequisites": []
+    },
+
+
+    {
+        "id": "CS 143",
+        "name": "Computer Science II Java",
+        "credits": 5,
         "quarter": 3,
-        "prerequisites": ["CSD 145"]
-    }
-    ,
+        "prerequisites": ["CS& 141"]
+    },
     {
-        "id": "CSD 149",
-        "name": "Algorithms",
-        "credits": 4,
+        "id": "CSD 122",
+        "name": "JavaScript and jQuery",
+        "credits": 5,
+        "quarter": 3,
+        "prerequisites": ["CSD 111", "CSD 112"]
+    },
+    {
+        "id": "MATH& 141",
+        "name": "Pre-Calculus I",
+        "credits": 5,
+        "quarter": 3,
+        "prerequisites": []
+    },
+
+
+    {
+        "id": "CSD 228",
+        "name": "Programming with C#",
+        "credits": 5,
         "quarter": 4,
-        "prerequisites": ["CSD 148"]
-    }
-    ,
+        "prerequisites": ["CS& 141"]
+    },
     {
-        "id": "CSD 150",
-        "name": "Algorithms",
-        "credits": 4,
+        "id": "CSD 275",
+        "name": "PHP Scripting",
+        "credits": 5,
+        "quarter": 4,
+        "prerequisites": ["CSD 111", "CSD 112"]
+    },
+    {
+        "id": "Social Science",
+        "name": "Any",
+        "credits": 5,
+        "quarter": 4,
+        "prerequisites": []
+    },
+
+
+    {
+        "id": "CSD 230",
+        "name": "Programming For Mobile Devices",
+        "credits": 5,
         "quarter": 5,
-        "prerequisites": ["CSD 145","CSD 146"]
+        "prerequisites": ["CS 143", "CSD 228"]
+    },
+    {
+        "id": "CSD 233",
+        "name": "C++ Programming",
+        "credits": 5,
+        "quarter": 5,
+        "prerequisites": ["CS 143"]
+    },
+    {
+        "id": "CSD 268",
+        "name": "Quality Assurance Methodologies",
+        "credits": 5,
+        "quarter": 5,
+        "prerequisites": ["CS& 141", "CS 143", "CSD 228", "CSD 233"]
+    },
+
+
+    {
+        "id": "CSD 299",
+        "name": "IT Project",
+        "credits": 3,
+        "quarter": 6,
+        "prerequisites": []
+    },
+    {
+        "id": "CSD 298",
+        "name": "Technical Interview/Job Search",
+        "credits": 5,
+        "quarter": 6,
+        "prerequisites": ["CS 143"]
+    },
+    {
+        "id": "DSGN 290",
+        "name": "Portfolio/Job Search",
+        "credits": 5,
+        "quarter": 6,
+        "prerequisites": ["CSD 299", "CSD 298"]
+    },
+    {
+        "id": "CSD/CSNT/DSGN/GAME",
+        "name": "Technical Elective",
+        "credits": 5,
+        "quarter": 6,
+        "prerequisites": []
     }
 ]

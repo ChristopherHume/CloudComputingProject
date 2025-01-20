@@ -1,7 +1,8 @@
 class Course {
-    constructor(id, name, credits, quarter, prerequisites) {
+    constructor(id, name, sub, credits, quarter, prerequisites) {
         this.id = id;
         this.name = name;
+        this.sub = sub;
         this.credits = credits;
         this.quarter = quarter;
         this.prerequisites = prerequisites;
@@ -20,6 +21,7 @@ async function loadCourses() {
         const courses = data.map(courseData => new Course(
             courseData.id,
             courseData.name,
+            courseData.sub,
             courseData.credits,
             courseData.quarter,
             courseData.prerequisites
@@ -32,9 +34,11 @@ async function loadCourses() {
 }
 
 // Function to display courses on the web page
+// Function to display courses on the web page
 function displayCourses(courses) {
     const courseList = document.getElementById('courseList');
     const quarters = {};
+    const displayedCourses = new Set();
 
     // Group courses by quarter
     courses.forEach(course => {
@@ -51,6 +55,10 @@ function displayCourses(courses) {
         courseList.appendChild(quarterHeader);
 
         quarters[quarter].forEach(course => {
+            if (displayedCourses.has(course.id)) {
+                return; // Skip if the course is already displayed
+            }
+
             const courseDiv = document.createElement('div');
             courseDiv.className = 'course grey';
             courseDiv.textContent = `${course.id}: ${course.name} (${course.credits} credits)`;
@@ -58,6 +66,28 @@ function displayCourses(courses) {
             courseDiv.dataset.prerequisites = JSON.stringify(course.prerequisites);
             courseDiv.addEventListener('click', () => handleCourseClick(courseDiv, courses));
             courseList.appendChild(courseDiv);
+            displayedCourses.add(course.id);
+
+            // Check if the course has a sub that is not null
+            if (course.sub) {
+                // Create and append the "or" header
+                const orHeader = document.createElement('h3');
+                orHeader.textContent = 'or';
+                courseList.appendChild(orHeader);
+
+                // Find the sub course
+                const subCourse = courses.find(c => c.id === course.sub);
+                if (subCourse && !displayedCourses.has(subCourse.id)) {
+                    const subCourseDiv = document.createElement('div');
+                    subCourseDiv.className = 'course grey';
+                    subCourseDiv.textContent = `${subCourse.id}: ${subCourse.name} (${subCourse.credits} credits)`;
+                    subCourseDiv.dataset.id = subCourse.id;
+                    subCourseDiv.dataset.prerequisites = JSON.stringify(subCourse.prerequisites);
+                    subCourseDiv.addEventListener('click', () => handleCourseClick(subCourseDiv, courses));
+                    courseList.appendChild(subCourseDiv);
+                    displayedCourses.add(subCourse.id);
+                }
+            }
         });
     });
 }

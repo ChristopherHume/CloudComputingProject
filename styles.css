@@ -1,0 +1,43 @@
+.course {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: block;
+}
+.grey {
+    background-color: lightgrey;
+    color: black;
+}
+.white {
+    background-color: white;
+    color: black;
+}
+.green {
+    background-color: lightgreen;
+    color: black;
+}
+span {
+  display: block;
+  background-color: lightgrey;
+  padding: 0.5rem 0;
+  width: 600px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 5px black;
+  cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    margin: 16px;
+    text-align: left;
+  }
+  th {
+    background-color: #f4f4f4;
+  }

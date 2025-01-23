@@ -1,0 +1,32 @@
+.course {
+    width: 40%;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+.grey {
+    background-color: lightgrey;
+    color: black;
+}
+.white {
+    background-color: white;
+    color: black;
+}
+.green {
+    background-color: lightgreen;
+    color: black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f4f4f4;
+  }

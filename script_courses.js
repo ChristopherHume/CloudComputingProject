@@ -65,6 +65,8 @@ document.getElementById('startButton').addEventListener('click', function () {
 });
 
 
+
+
 //this code is used to select between courses
 // Allow a user to click spans between lightgreen (course completed) and white (course available)
 document.body.addEventListener('click', function (event) {
@@ -106,18 +108,61 @@ document.body.addEventListener('click', function (event) {
       // If the course is a prerequisite
       if (required_by.length > 0) {
         // For each course that needs this course
-        required_by.forEach(requiredId => {
-          const course = document.getElementById(requiredId);
-          const prereqs = JSON.parse(course.dataset.prerequisites);
-          // Check if this course is still required
-          if (prereqs.includes(event.target.id)) {
-            course.style.backgroundColor = 'lightgrey'; // Reset to default (gray)
-          }
-        });
+        greyOutRequiredBy(required_by);
+        // required_by.forEach(requiredId => {
+        //   const course = document.getElementById(requiredId);
+        //   alert(course.id);
+        //   const testName = document.getElementById(course.id);
+        //   alert( testName.dataset.required_by + " " + testName.id);
+        //   const prereqs = JSON.parse(course.dataset.prerequisites);
+        //   // Check if this course is still required
+        //   if (prereqs.includes(event.target.id)) {
+        //     course.style.backgroundColor = 'lightgrey'; // Reset to default (gray)
+        //   }
+        // });
       }
     }
   }
 });
+
+
+// TODO: write recursive function that will grey out courses that do not have all
+// of the prerequisites completed
+// base case: 0 required_by
+
+function greyOutRequiredBy(requiredBY){
+
+  alert("lenght " + requiredBY.length + " " + requiredBY)
+
+  if(requiredBY.length === 0){
+    return;
+  }
+
+  requiredBY.forEach(id => {
+    alert("in foreach " + id);
+    const course = document.getElementById(id);
+  
+    // if(!course){
+    //   return;
+    // }
+    course.style.backgroundColor = 'lightgrey';
+
+    //running into problem here. I am not getting the
+    const nextGroup = JSON.parse(course.dataset.required_by);
+    alert(" next group " + nextGroup);
+    //alert(course.dataset.required_by);
+    if(!course.dataset.required_by){
+      alert("in return for no name or dataset.")
+      return;
+    }
+    
+    alert("Hi" + course.dataset.required_by)
+    greyOutRequiredBy(nextGroup);
+    
+
+  })
+}
+
 
 
 /*

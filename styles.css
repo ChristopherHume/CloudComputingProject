@@ -1,22 +1,26 @@
 .course {
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    display: block;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  display: block;
 }
+
 .grey {
-    background-color: lightgrey;
-    color: black;
+  background-color: lightgrey;
+  color: black;
 }
+
 .white {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
 }
+
 .green {
-    background-color: lightgreen;
-    color: black;
+  background-color: lightgreen;
+  color: black;
 }
+
 span {
   display: block;
   background-color: lightgrey;
@@ -29,15 +33,18 @@ span {
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    margin: 16px;
-    text-align: left;
-  }
-  th {
-    background-color: #f4f4f4;
-  }
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  margin: 16px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}

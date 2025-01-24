@@ -6,7 +6,13 @@
         "credits": 5,
         "quarter": 1,
         "prerequisites": [],
-        "required_by": ["CSD 112", "CS& 141", "CSD 138", "CSD 122", "CSD 275"]
+        "required_by": [
+            "CSD 112",
+            "CS& 141",
+            "CSD 138",
+            "CSD 122",
+            "CSD 275"
+        ]
     },
     {
         "id": "CSD 112",
@@ -14,8 +20,13 @@
         "sub": null,
         "credits": 5,
         "quarter": 1,
-        "prerequisites": ["CSD 111"],
-        "required_by": ["CSD 122", "CSD 275"]
+        "prerequisites": [
+            "CSD 111"
+        ],
+        "required_by": [
+            "CSD 122",
+            "CSD 275"
+        ]
     },
     {
         "id": "GAME 108",
@@ -35,16 +46,20 @@
         "prerequisites": [],
         "required_by": []
     },
-
-
     {
         "id": "CS& 141",
         "name": "Computer Science I Java",
         "sub": null,
         "credits": 5,
         "quarter": 2,
-        "prerequisites": ["CSD 111"],
-        "required_by": ["CS 143", "CSD 228", "CSD 268"]
+        "prerequisites": [
+            "CSD 111"
+        ],
+        "required_by": [
+            "CS 143",
+            "CSD 228",
+            "CSD 268"
+        ]
     },
     {
         "id": "CSD 138",
@@ -52,7 +67,9 @@
         "sub": null,
         "credits": 5,
         "quarter": 2,
-        "prerequisites": ["CSD 111"],
+        "prerequisites": [
+            "CSD 111"
+        ],
         "required_by": []
     },
     {
@@ -64,16 +81,21 @@
         "prerequisites": [],
         "required_by": []
     },
-
-
     {
         "id": "CS 143",
         "name": "Computer Science II Java",
         "sub": null,
         "credits": 5,
         "quarter": 3,
-        "prerequisites": ["CS& 141"],
-        "required_by": ["CSD 230", "CSD 233", "CSD 268", "CSD 298"]
+        "prerequisites": [
+            "CS& 141"
+        ],
+        "required_by": [
+            "CSD 230",
+            "CSD 233",
+            "CSD 268",
+            "CSD 298"
+        ]
     },
     {
         "id": "CSD 122",
@@ -81,7 +103,10 @@
         "sub": null,
         "credits": 5,
         "quarter": 3,
-        "prerequisites": ["CSD 111", "CSD 112"],
+        "prerequisites": [
+            "CSD 111",
+            "CSD 112"
+        ],
         "required_by": []
     },
     {
@@ -93,16 +118,19 @@
         "prerequisites": [],
         "required_by": []
     },
-
-
     {
         "id": "CSD 228",
         "name": "Programming with C#",
         "sub": null,
         "credits": 5,
         "quarter": 4,
-        "prerequisites": ["CS& 141"],
-        "required_by": ["CSD 230", "CSD 268"]
+        "prerequisites": [
+            "CS& 141"
+        ],
+        "required_by": [
+            "CSD 230",
+            "CSD 268"
+        ]
     },
     {
         "id": "CSD 275",
@@ -110,7 +138,10 @@
         "sub": null,
         "credits": 5,
         "quarter": 4,
-        "prerequisites": ["CSD 111", "CSD 112"],
+        "prerequisites": [
+            "CSD 111",
+            "CSD 112"
+        ],
         "required_by": []
     },
     {
@@ -122,15 +153,16 @@
         "prerequisites": [],
         "required_by": []
     },
-
-
     {
         "id": "CSD 230",
         "name": "Programming For Mobile Devices",
         "sub": null,
         "credits": 5,
         "quarter": 5,
-        "prerequisites": ["CS 143", "CSD 228"],
+        "prerequisites": [
+            "CS 143",
+            "CSD 228"
+        ],
         "required_by": []
     },
     {
@@ -139,7 +171,9 @@
         "sub": null,
         "credits": 5,
         "quarter": 5,
-        "prerequisites": ["CS 143"],
+        "prerequisites": [
+            "CS 143"
+        ],
         "required_by": []
     },
     {
@@ -148,11 +182,14 @@
         "sub": null,
         "credits": 5,
         "quarter": 5,
-        "prerequisites": ["CS& 141", "CS 143", "CSD 228", "CSD 233"],
+        "prerequisites": [
+            "CS& 141",
+            "CS 143",
+            "CSD 228",
+            "CSD 233"
+        ],
         "required_by": []
     },
-
-
     {
         "id": "CSD 299",
         "name": "IT Project",
@@ -160,7 +197,9 @@
         "credits": 3,
         "quarter": 6,
         "prerequisites": [],
-        "required_by": ["DSGN 290"]
+        "required_by": [
+            "DSGN 290"
+        ]
     },
     {
         "id": "CSD 298",
@@ -168,7 +207,9 @@
         "sub": "DSGN 290",
         "credits": 5,
         "quarter": 6,
-        "prerequisites": ["CS 143"],
+        "prerequisites": [
+            "CS 143"
+        ],
         "required_by": []
     },
     {
@@ -177,7 +218,9 @@
         "sub": null,
         "credits": 5,
         "quarter": 6,
-        "prerequisites": ["CSD 299"],
+        "prerequisites": [
+            "CSD 299"
+        ],
         "required_by": []
     },
     {

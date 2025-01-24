@@ -109,6 +109,12 @@ document.body.addEventListener('click', function (event) {
       if (required_by.length > 0) {
         // For each course that needs this course
         greyOutRequiredBy(required_by);
+
+
+        // TODO: I left this code in until verification that everything works and 
+        //        it is no longer needed.
+
+        
         // required_by.forEach(requiredId => {
         //   const course = document.getElementById(requiredId);
         //   alert(course.id);
@@ -126,40 +132,28 @@ document.body.addEventListener('click', function (event) {
 });
 
 
-// TODO: write recursive function that will grey out courses that do not have all
-// of the prerequisites completed
-// base case: 0 required_by
-
+/* 
+  Recursive Function to grey out classes when prerequisite is deselected
+ */
 function greyOutRequiredBy(requiredBY){
 
-  alert("lenght " + requiredBY.length + " " + requiredBY)
-
+  // base case
   if(requiredBY.length === 0){
     return;
   }
 
+  // go through each class and the classes required by it.
   requiredBY.forEach(id => {
-    //alert("in foreach " + id);
     const course = document.getElementById(id);
-  
-    // if(!course){
-    //   return;
-    // }
-    course.style.backgroundColor = 'lightgrey';
-
-    //running into problem here. I am not getting the
-    const nextGroup = JSON.parse(course.dataset.required_by);
-    alert(" next group " + nextGroup);
-    //alert(course.dataset.required_by);
-    if(!course.dataset.required_by){
-      alert("in return for no name or dataset.")
+    if(!course){
       return;
     }
     
-    //alert("Hi" + course.dataset.required_by)
-    greyOutRequiredBy(nextGroup);
-    
+    course.style.backgroundColor = 'lightgrey';
 
+    // Get the group of required by classes and process them.
+    const nextGroup = JSON.parse(course.dataset.required_by);
+    greyOutRequiredBy(nextGroup);
   })
 }
 

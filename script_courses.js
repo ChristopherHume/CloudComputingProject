@@ -139,7 +139,7 @@ function greyOutRequiredBy(requiredBY){
   }
 
   requiredBY.forEach(id => {
-    alert("in foreach " + id);
+    //alert("in foreach " + id);
     const course = document.getElementById(id);
   
     // if(!course){
@@ -156,7 +156,7 @@ function greyOutRequiredBy(requiredBY){
       return;
     }
     
-    alert("Hi" + course.dataset.required_by)
+    //alert("Hi" + course.dataset.required_by)
     greyOutRequiredBy(nextGroup);
     
 

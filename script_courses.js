@@ -25,7 +25,7 @@ function renderTableForQuarter(quarter, data) {
 }
 
 // Fetch data from courses.json
-fetch('courses.json')
+fetch('https://vo239v3ve2.execute-api.us-east-1.amazonaws.com/Dev')
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);

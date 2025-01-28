@@ -174,7 +174,7 @@
         "prerequisites": [
             "CS 143"
         ],
-        "required_by": []
+        "required_by": ["CSD 268"]
     },
     {
         "id": "CSD 268",

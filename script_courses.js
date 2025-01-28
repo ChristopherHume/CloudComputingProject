@@ -24,8 +24,11 @@ function renderTableForQuarter(quarter, data) {
   });
 }
 
+// Get coursesJSON from lambda
+coursesJSON = ('courses.json')
+
 // Fetch data from courses.json
-fetch('courses.json')
+fetch(coursesJSON)
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -95,72 +98,49 @@ document.body.addEventListener('click', function (event) {
         });
       }
     }
-    //I included this part only
+
     // If the span's background is lightgreen (completed)
     else if (event.target.style.backgroundColor === 'lightgreen') {
       // Set background color back to white (available)
       event.target.style.backgroundColor = 'white';
-
       // Get the array of courses that need this course
       const required_by = JSON.parse(event.target.dataset.required_by);
       // If the course is a prerequisite
       if (required_by.length > 0) {
         // For each course that needs this course
-        required_by.forEach(requiredId => {
-          const course = document.getElementById(requiredId);
-          const prereqs = JSON.parse(course.dataset.prerequisites);
-          // Check if this course is still required
-          if (prereqs.includes(event.target.id)) {
-            course.style.backgroundColor = 'lightgrey'; // Reset to default (gray)
-          }
-        });
+        greyOutRequiredBy(required_by);
       }
     }
   }
 });
 
 
-/*
-Note: this is the original Chris's code where I added more lines to change from green to white when clicking on the span. 
-the code I added begins in the else if line
+/* 
+  Recursive Function to grey out classes when prerequisite is deselected
+ */
+function greyOutRequiredBy(requiredBY){
 
-// Allow user to click spans that are available to be clicked
-document.body.addEventListener('click', function (event) {
-  // If the item is a span
-  if (event.target.tagName === 'SPAN') {
-    // If the span's background is white (available)
-    if (event.target.style.backgroundColor === 'white') {
-      // Set background color to lightgreen
-      event.target.style.backgroundColor = 'lightgreen';
-      // Get the array of courses that need this course
-      required_by = JSON.parse(event.target.dataset.required_by);
-      // If the course is a prerequisite
-      if (required_by.length > 0) {
-        // for each course that needs this course
-        for (let i = 0; i < required_by.length; i++) {
-          // Checks the course
-          course = document.getElementById(required_by[i])
-          // Get prereqs for that course
-          prereqs = JSON.parse(course.dataset.prerequisites);
-          // boolean for whether the course should be made available
-          avail = true
-          for (let i = 0; i < prereqs.length; i++) {
-            // get the course to check
-            c = document.getElementById(prereqs[i])
-            // If the course is not completed
-            if (c.backgroundColor != 'lightgreen') {
-              // Set avail to false
-              avail = false
-            }
-          }
-          // Since all prereqs were completed
-          if (true) {
-            // Set background color to white
-            course.style.backgroundColor = 'white';
-          }
-        }
-      }
-    }
+  // base case
+  if(requiredBY.length === 0){
+    return;
   }
-});
-*/
+
+  // go through each class and the classes required by it.
+  requiredBY.forEach(id => {
+    // Get the course id
+    const course = document.getElementById(id);
+    // If the course does not exist, return (error)
+    if(!course){
+      return;
+    }
+    
+    // Set course to unavailable
+    course.style.backgroundColor = 'lightgrey';
+
+    // Get the group of required by classes and process them.
+    const nextGroup = JSON.parse(course.dataset.required_by);
+    // Recursively run function to set other courses unavailable
+    greyOutRequiredBy(nextGroup);
+  })
+}
+

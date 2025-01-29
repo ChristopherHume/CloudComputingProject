@@ -25,9 +25,9 @@ function renderTableForQuarter(quarter, data) {
 }
 
 // Get coursesJSON from lambda
-coursesJSON = ('courses.json')
+const coursesJSON = 'https://auct08p43b.execute-api.us-east-1.amazonaws.com/default/GetCoursesFromJson'
 
-// Fetch data from courses.json
+// Fetch data from lambda function in aws
 fetch(coursesJSON)
   .then(response => {
     if (!response.ok) {

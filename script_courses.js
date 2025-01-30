@@ -10,22 +10,27 @@ function renderTableForQuarter(quarter, data) {
   data.forEach(course => {
     // Creates the span for the course
     const c = document.createElement("span");
+    
     // Creates the text for the span
-    c.innerHTML = `
-            ${course.id} : ${course.name} ( ${course.credits} Credits )
-        `;
+    c.textContent = `${course.id} : ${course.name} ( ${course.credits} Credits )`;
+
     // Sets the id for the course
     c.id = `${course.id}`;
-    // Creates the dataset of prerequisites
+
+    // Creates the dataset of prerequisites and requirements
     c.dataset.prerequisites = JSON.stringify(course.prerequisites);
-    // Creates the dataset of requirements
     c.dataset.required_by = JSON.stringify(course.required_by);
+
+    // Sets onclick function for the course
+    c.onclick = function() { clickCourse(c.id) };
     courses.appendChild(c);
   });
 }
 
+// courses.appendChild(<span onClick="click('CSD_111')" id="CSD_111"> CSD 111: Programming</span>)
+
 // Get coursesJSON from lambda
-coursesJSON = ('courses.json')
+coursesJSON = ('PUT LAMBDA CONNECTION HERE')
 
 // Fetch data from courses.json
 fetch(coursesJSON)
@@ -67,53 +72,49 @@ document.getElementById('startButton').addEventListener('click', function () {
   });
 });
 
-
-//this code is used to select between courses
+// Function about clicking a course
 // Allow a user to click spans between lightgreen (course completed) and white (course available)
-document.body.addEventListener('click', function (event) {
-  // If the item is a span
-  if (event.target.tagName === 'SPAN') {
-    // If the span's background is white (available)
-    if (event.target.style.backgroundColor === 'white') {
-      // Set background color to lightgreen (completed)
-      event.target.style.backgroundColor = 'lightgreen';
-
-      // Get the array of courses that need this course
-      const required_by = JSON.parse(event.target.dataset.required_by);
-      // If the course is a prerequisite
-      if (required_by.length > 0) {
-        // For each course that needs this course
-        required_by.forEach(requiredId => {
-          const course = document.getElementById(requiredId);
-          const prereqs = JSON.parse(course.dataset.prerequisites);
-          // Check if all prerequisites are completed
-          const allCompleted = prereqs.every(prereqId => {
-            const prereq = document.getElementById(prereqId);
-            return prereq.style.backgroundColor === 'lightgreen';
-          });
-          // Make the course available if all prerequisites are completed
-          if (allCompleted) {
-            course.style.backgroundColor = 'white';
-          }
+function clickCourse(courseId) {
+  // Get course
+  c = document.getElementById(courseId);
+  // If the span's background is white (available)
+  if (c.style.backgroundColor === 'white') {
+    // Set background color to lightgreen (completed)
+    c.style.backgroundColor = 'lightgreen';
+    // Get the array of courses that need this course
+    const required_by = JSON.parse(c.dataset.required_by);
+    // If the course is a prerequisite
+    if (required_by.length > 0) {
+      // For each course that needs this course
+      required_by.forEach(requiredId => {
+        const course = document.getElementById(requiredId);
+        const prereqs = JSON.parse(course.dataset.prerequisites);
+        // Check if all prerequisites are completed
+        const allCompleted = prereqs.every(prereqId => {
+          const prereq = document.getElementById(prereqId);
+          return prereq.style.backgroundColor === 'lightgreen';
         });
-      }
-    }
-
-    // If the span's background is lightgreen (completed)
-    else if (event.target.style.backgroundColor === 'lightgreen') {
-      // Set background color back to white (available)
-      event.target.style.backgroundColor = 'white';
-      // Get the array of courses that need this course
-      const required_by = JSON.parse(event.target.dataset.required_by);
-      // If the course is a prerequisite
-      if (required_by.length > 0) {
-        // For each course that needs this course
-        greyOutRequiredBy(required_by);
-      }
+        // Make the course available if all prerequisites are completed
+        if (allCompleted) {
+          course.style.backgroundColor = 'white';
+        }
+      });
     }
   }
-});
 
+  // If the span's background is lightgreen (completed)
+  else if (c.style.backgroundColor === 'lightgreen') {
+    // Set background color back to white (available)
+    c.style.backgroundColor = 'white';
+    // Get the array of courses that need this course
+    const required_by = JSON.parse(c.dataset.required_by);
+    // If the course is a prerequisite
+    if (required_by.length > 0) {
+      // For each course that needs this course
+      greyOutRequiredBy(required_by);
+    }
+  }
+}
 
 /* 
   Recursive Function to grey out classes when prerequisite is deselected

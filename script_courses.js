@@ -59,7 +59,7 @@ function creatTablePerQuarter(programCourses) {
 }
 
 //get the json file from lambda
-const coursesJSON = 'https://auct08p43b.execute-api.us-east-1.amazonaws.com/default/GetCoursesFromJson';
+const coursesJSON = 'https://wwpzw4gqd1.execute-api.us-east-1.amazonaws.com/default/FetchJsonFromDocumentDB';
 
 fetch(coursesJSON)
   .then(response => {

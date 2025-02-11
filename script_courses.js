@@ -95,6 +95,9 @@ document.getElementById('startButton').addEventListener('click', function () {
           // Set the background color to white (available)
           span.style.backgroundColor = 'white';
       }
+      else {
+        span.style.backgroundColor = 'lightgrey';
+      }
   });
 });
 
